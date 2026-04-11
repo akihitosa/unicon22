@@ -17,69 +17,364 @@
       --sub: #64748b;
       --border: #e2e8f0;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: "Hiragino Kaku Gothic ProN", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-    .hero { background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 50%, #0f766e 100%); color: white; padding: 48px 24px 40px; text-align: center; }
-    .hero h1 { font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 800; margin-bottom: 8px; }
-    .hero .subtitle { font-size: 1rem; opacity: 0.85; margin-bottom: 24px; }
-    .hero .badges { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-    .badge { background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35); border-radius: 999px; padding: 5px 14px; font-size: 0.82rem; font-weight: 600; }
-    .summary-bar { background: white; border-bottom: 1px solid var(--border); padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
-    .summary-item { text-align: center; }
-    .summary-item .val { font-size: 1.5rem; font-weight: 700; color: var(--accent1); }
-    .summary-item .lbl { font-size: 0.75rem; color: var(--sub); }
-    .route-section { max-width: 860px; margin: 32px auto 0; padding: 0 16px; }
-    .route-track { display: flex; align-items: center; flex-wrap: wrap; background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; overflow-x: auto; }
-    .route-node { display: flex; flex-direction: column; align-items: center; min-width: 72px; }
+
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 50%, #0f766e 100%);
+      color: white;
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 8px;
+    }
+    .hero .subtitle {
+      font-size: 1rem;
+      opacity: 0.85;
+      margin-bottom: 24px;
+    }
+    .hero .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .badge {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    /* ===== SUMMARY BAR ===== */
+    .summary-bar {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+    }
+    .summary-item {
+      text-align: center;
+    }
+    .summary-item .val {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent1);
+    }
+    .summary-item .lbl {
+      font-size: 0.75rem;
+      color: var(--sub);
+    }
+
+    /* ===== ROUTE MAP (text) ===== */
+    .route-section {
+      max-width: 860px;
+      margin: 32px auto 0;
+      padding: 0 16px;
+    }
+    .route-track {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      overflow-x: auto;
+    }
+    .route-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 72px;
+    }
     .route-node .icon { font-size: 1.6rem; }
     .route-node .city { font-size: 0.72rem; font-weight: 700; color: var(--text); margin-top: 4px; text-align: center; }
     .route-node .code { font-size: 0.65rem; color: var(--sub); }
-    .route-arrow { flex: 1; min-width: 28px; text-align: center; color: var(--sub); font-size: 1.1rem; padding: 0 4px; }
+    .route-arrow {
+      flex: 1;
+      min-width: 28px;
+      text-align: center;
+      color: var(--sub);
+      font-size: 1.1rem;
+      padding: 0 4px;
+    }
     .route-section h2 { font-size: 0.8rem; color: var(--sub); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
-    .timeline-wrapper { max-width: 860px; margin: 32px auto 48px; padding: 0 16px; }
-    .phase-title { display: flex; align-items: center; gap: 10px; margin: 32px 0 12px; font-size: 1rem; font-weight: 700; color: var(--sub); text-transform: uppercase; letter-spacing: 0.06em; }
-    .phase-title::after { content: ""; flex: 1; height: 1px; background: var(--border); }
-    .tl-item { display: flex; gap: 0; margin-bottom: 0; }
-    .tl-date { width: 88px; min-width: 88px; padding-right: 16px; padding-top: 18px; text-align: right; }
+
+    /* ===== TIMELINE ===== */
+    .timeline-wrapper {
+      max-width: 860px;
+      margin: 32px auto 48px;
+      padding: 0 16px;
+    }
+    .phase-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 32px 0 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--sub);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .phase-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .tl-item {
+      display: flex;
+      gap: 0;
+      margin-bottom: 0;
+    }
+
+    /* Left: date column */
+    .tl-date {
+      width: 88px;
+      min-width: 88px;
+      padding-right: 16px;
+      padding-top: 18px;
+      text-align: right;
+    }
     .tl-date .month { font-size: 0.7rem; color: var(--sub); }
-    .tl-date .day { font-size: 1.5rem; font-weight: 800; color: var(--accent1); line-height: 1; }
-    .tl-date .dow { font-size: 0.68rem; color: var(--sub); }
-    .tl-spine { display: flex; flex-direction: column; align-items: center; width: 32px; min-width: 32px; }
-    .tl-dot { width: 14px; height: 14px; border-radius: 50%; border: 3px solid white; margin-top: 22px; flex-shrink: 0; box-shadow: 0 0 0 2px currentColor; }
-    .tl-line { flex: 1; width: 2px; background: var(--border); }
+    .tl-date .day   { font-size: 1.5rem; font-weight: 800; color: var(--accent1); line-height: 1; }
+    .tl-date .dow   { font-size: 0.68rem; color: var(--sub); }
+
+    /* Center: spine */
+    .tl-spine {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 32px;
+      min-width: 32px;
+    }
+    .tl-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 3px solid white;
+      margin-top: 22px;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 2px currentColor;
+    }
+    .tl-line {
+      flex: 1;
+      width: 2px;
+      background: var(--border);
+    }
     .tl-item:last-child .tl-line { display: none; }
-    .tl-card { flex: 1; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+
+    /* Right: card */
+    .tl-card {
+      flex: 1;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
     .tl-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.10); transition: box-shadow .2s; }
-    .card-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
     .card-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
     .card-title { font-size: 1rem; font-weight: 700; }
-    .card-tag { margin-left: auto; font-size: 0.7rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
-    .tag-travel { background: #eff6ff; color: #1d4ed8; }
-    .tag-flight { background: #f0fdf4; color: #166534; }
-    .tag-stay { background: #fdf4ff; color: #7e22ce; }
-    .tag-event { background: #fff7ed; color: #c2410c; }
-    .tag-arrive { background: #f0fdfa; color: #0f766e; }
-    .tag-home { background: #fef2f2; color: #991b1b; }
+    .card-tag {
+      margin-left: auto;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .tag-travel  { background: #eff6ff; color: #1d4ed8; }
+    .tag-flight  { background: #f0fdf4; color: #166534; }
+    .tag-stay    { background: #fdf4ff; color: #7e22ce; }
+    .tag-event   { background: #fff7ed; color: #c2410c; }
+    .tag-arrive  { background: #f0fdfa; color: #0f766e; }
+    .tag-home    { background: #fef2f2; color: #991b1b; }
+
     .card-body { font-size: 0.875rem; color: var(--sub); }
     .card-body p { margin-bottom: 4px; }
     .card-body strong { color: var(--text); }
-    .flight-row { display: flex; align-items: center; gap: 8px; margin: 8px 0; padding: 10px 14px; background: var(--bg); border-radius: 8px; font-size: 0.85rem; }
-    .flight-time { font-size: 1.1rem; font-weight: 700; color: var(--text); min-width: 44px; }
-    .flight-airport { font-weight: 600; font-size: 0.8rem; color: var(--sub); }
-    .flight-arrow { flex: 1; border-top: 2px dashed var(--border); position: relative; margin: 0 4px; }
-    .flight-arrow::after { content: "✈"; position: absolute; top: -11px; left: 50%; transform: translateX(-50%); font-size: 0.9rem; background: var(--bg); padding: 0 4px; }
-    .flight-info-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; font-size: 0.78rem; }
-    .chip { background: var(--border); border-radius: 6px; padding: 2px 8px; color: var(--sub); }
-    .note-box { margin-top: 8px; padding: 8px 12px; background: #fef9c3; border-left: 3px solid #ca8a04; border-radius: 0 6px 6px 0; font-size: 0.8rem; color: #854d0e; }
-    .c-blue { color: var(--accent1); }
+
+    .flight-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 8px 0;
+      padding: 10px 14px;
+      background: var(--bg);
+      border-radius: 8px;
+      font-size: 0.85rem;
+    }
+    .flight-time {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      min-width: 44px;
+    }
+    .flight-airport {
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: var(--sub);
+    }
+    .flight-arrow {
+      flex: 1;
+      border-top: 2px dashed var(--border);
+      position: relative;
+      margin: 0 4px;
+    }
+    .flight-arrow::after {
+      content: "✈";
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.9rem;
+      background: var(--bg);
+      padding: 0 4px;
+    }
+    .flight-info-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+      font-size: 0.78rem;
+    }
+    .chip {
+      background: var(--border);
+      border-radius: 6px;
+      padding: 2px 8px;
+      color: var(--sub);
+    }
+
+    .note-box {
+      margin-top: 8px;
+      padding: 8px 12px;
+      background: #fef9c3;
+      border-left: 3px solid #ca8a04;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.8rem;
+      color: #854d0e;
+    }
+
+    .hotel-box {
+      margin-top: 10px;
+      padding: 12px 16px;
+      background: #fdf4ff;
+      border: 1px solid #e9d5ff;
+      border-radius: 10px;
+      font-size: 0.85rem;
+    }
+    .hotel-box .hotel-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #6d28d9;
+      margin-bottom: 4px;
+    }
+    .hotel-box .hotel-sub {
+      font-size: 0.78rem;
+      color: var(--sub);
+      margin-bottom: 8px;
+    }
+    .hotel-box .hotel-rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #ede9fe;
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #5b21b6;
+      margin-bottom: 8px;
+    }
+    .hotel-amenities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+    .amenity {
+      font-size: 0.72rem;
+      background: white;
+      border: 1px solid #e9d5ff;
+      border-radius: 999px;
+      padding: 2px 10px;
+      color: #6d28d9;
+    }
+
+    .cost-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .cost-chip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 12px;
+      font-size: 0.78rem;
+    }
+    .cost-chip .cost-val { font-weight: 700; color: var(--text); }
+
+    /* color dots */
+    .c-blue   { color: var(--accent1); }
     .c-purple { color: var(--accent2); }
-    .c-green { color: var(--accent3); }
-    .c-red { color: var(--accent5); }
-    footer { text-align: center; padding: 24px; font-size: 0.75rem; color: var(--sub); border-top: 1px solid var(--border); }
-    @media (max-width: 560px) { .tl-date { width: 60px; min-width: 60px; } .tl-date .day { font-size: 1.2rem; } .flight-row { flex-wrap: wrap; } }
+    .c-green  { color: var(--accent3); }
+    .c-orange { color: var(--accent4); }
+    .c-red    { color: var(--accent5); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.75rem;
+      color: var(--sub);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 560px) {
+      .tl-date { width: 60px; min-width: 60px; }
+      .tl-date .day { font-size: 1.2rem; }
+      .flight-row { flex-wrap: wrap; }
+    }
   </style>
 </head>
 <body>
+
+<!-- ===== HERO ===== -->
 <div class="hero">
   <h1>🦄 佐藤家 UNICON 22 旅程表</h1>
   <p class="subtitle">2026年7月23日（木）〜 8月13日（水）｜福島市 発着</p>
@@ -89,138 +384,478 @@
     <span class="badge">3ヶ国周遊</span>
   </div>
 </div>
+
+<!-- ===== SUMMARY BAR ===== -->
 <div class="summary-bar">
   <div class="summary-item"><div class="val">22</div><div class="lbl">総日数</div></div>
   <div class="summary-item"><div class="val">4</div><div class="lbl">フライト数</div></div>
   <div class="summary-item"><div class="val">16</div><div class="lbl">ウィーン泊数</div></div>
   <div class="summary-item"><div class="val">2</div><div class="lbl">台北泊数</div></div>
 </div>
+
+<!-- ===== ROUTE ===== -->
 <div class="route-section">
   <h2>ルート概要</h2>
   <div class="route-track">
-    <div class="route-node"><div class="icon">🏠</div><div class="city">福島市</div><div class="code">FSK</div></div>
+    <div class="route-node">
+      <div class="icon">🏠</div>
+      <div class="city">福島市</div>
+      <div class="code">FSK</div>
+    </div>
     <div class="route-arrow">→</div>
-    <div class="route-node"><div class="icon">✈️</div><div class="city">東京<br>羽田</div><div class="code">HND</div></div>
+    <div class="route-node">
+      <div class="icon">✈️</div>
+      <div class="city">東京<br>羽田</div>
+      <div class="code">HND</div>
+    </div>
     <div class="route-arrow">→</div>
-    <div class="route-node"><div class="icon">🌅</div><div class="city">ドバイ</div><div class="code">DXB</div></div>
+    <div class="route-node">
+      <div class="icon">🌅</div>
+      <div class="city">ドバイ</div>
+      <div class="code">DXB</div>
+    </div>
     <div class="route-arrow">→</div>
-    <div class="route-node"><div class="icon">🎡</div><div class="city">ウィーン</div><div class="code">VIE</div></div>
+    <div class="route-node">
+      <div class="icon">🎡</div>
+      <div class="city">ウィーン</div>
+      <div class="code">VIE</div>
+    </div>
     <div class="route-arrow">→</div>
-    <div class="route-node"><div class="icon">🧋</div><div class="city">台北<br>桃園</div><div class="code">TPE</div></div>
+    <div class="route-node">
+      <div class="icon">🧋</div>
+      <div class="city">台北<br>桃園</div>
+      <div class="code">TPE</div>
+    </div>
     <div class="route-arrow">→</div>
-    <div class="route-node"><div class="icon">🏯</div><div class="city">仙台</div><div class="code">SDJ</div></div>
+    <div class="route-node">
+      <div class="icon">🏯</div>
+      <div class="city">仙台</div>
+      <div class="code">SDJ</div>
+    </div>
     <div class="route-arrow">→</div>
-    <div class="route-node"><div class="icon">🏠</div><div class="city">福島市</div><div class="code">FSK</div></div>
+    <div class="route-node">
+      <div class="icon">🏠</div>
+      <div class="city">福島市</div>
+      <div class="code">FSK</div>
+    </div>
   </div>
 </div>
+
+<!-- ===== TIMELINE ===== -->
 <div class="timeline-wrapper">
-  <div class="phase-title"><span>🛫 Phase 1 — 日本 出発</span></div>
+
+  <!-- PHASE 1: 日本出発 -->
+  <div class="phase-title">
+    <span>🛫 Phase 1 — 日本 出発</span>
+  </div>
+
+  <!-- Day 1: 7/23 -->
   <div class="tl-item">
-    <div class="tl-date"><div class="month">7月</div><div class="day c-blue">23</div><div class="dow">木曜日</div></div>
-    <div class="tl-spine"><div class="tl-dot c-blue"></div><div class="tl-line"></div></div>
+    <div class="tl-date">
+      <div class="month">7月</div>
+      <div class="day c-blue">23</div>
+      <div class="dow">木曜日</div>
+    </div>
+    <div class="tl-spine">
+      <div class="tl-dot c-blue"></div>
+      <div class="tl-line"></div>
+    </div>
     <div class="tl-card">
-      <div class="card-header"><div class="card-icon">🚅</div><div><div class="card-title">福島市 → 東京（羽田空港）</div></div><span class="card-tag tag-travel">移動日</span></div>
+      <div class="card-header">
+        <div class="card-icon">🚅</div>
+        <div>
+          <div class="card-title">福島市 → 東京（羽田空港）</div>
+        </div>
+        <span class="card-tag tag-travel">移動日</span>
+      </div>
       <div class="card-body">
-        <div class="flight-row"><div><div class="flight-time">福島駅</div><div class="flight-airport">新幹線 やまびこ</div></div><div class="flight-arrow"></div><div style="text-align:right"><div class="flight-time">東京駅</div><div class="flight-airport">約 90分</div></div></div>
-        <div class="flight-row" style="margin-top:6px"><div><div class="flight-time">東京駅</div><div class="flight-airport">京急線 / モノレール</div></div><div class="flight-arrow"></div><div style="text-align:right"><div class="flight-time">羽田空港</div><div class="flight-airport">第 3 ターミナル</div></div></div>
-        <div class="note-box">深夜 00:05 発のフライトのため、前日中に羽田空港へ到着・チェックイン手続きを完了させること。空港内ホテル or ターミナル内で待機推奨。</div>
+        <div class="flight-row">
+          <div>
+            <div class="flight-time">福島駅</div>
+            <div class="flight-airport">新幹線 やまびこ</div>
+          </div>
+          <div class="flight-arrow"></div>
+          <div style="text-align:right">
+            <div class="flight-time">東京駅</div>
+            <div class="flight-airport">約 90分</div>
+          </div>
+        </div>
+        <div class="flight-row" style="margin-top:6px">
+          <div>
+            <div class="flight-time">東京駅</div>
+            <div class="flight-airport">京急線 / モノレール</div>
+          </div>
+          <div class="flight-arrow"></div>
+          <div style="text-align:right">
+            <div class="flight-time">羽田空港</div>
+            <div class="flight-airport">第 3 ターミナル</div>
+          </div>
+        </div>
+        <div class="note-box">
+          深夜 00:05 発のフライトのため、前日中に羽田空港へ到着・チェックイン手続きを完了させること。
+          空港内ホテル or ターミナル内で待機推奨。
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Day 2: 7/24 -->
   <div class="tl-item">
-    <div class="tl-date"><div class="month">7月</div><div class="day c-blue">24</div><div class="dow">金曜日</div></div>
-    <div class="tl-spine"><div class="tl-dot c-blue"></div><div class="tl-line"></div></div>
+    <div class="tl-date">
+      <div class="month">7月</div>
+      <div class="day c-blue">24</div>
+      <div class="dow">金曜日</div>
+    </div>
+    <div class="tl-spine">
+      <div class="tl-dot c-blue"></div>
+      <div class="tl-line"></div>
+    </div>
     <div class="tl-card">
-      <div class="card-header"><div class="card-icon">✈️</div><div><div class="card-title">羽田(HND) → ドバイ(DXB) → ウィーン(VIE)</div></div><span class="card-tag tag-flight">フライト</span></div>
+      <div class="card-header">
+        <div class="card-icon">✈️</div>
+        <div>
+          <div class="card-title">羽田(HND) → ドバイ(DXB) → ウィーン(VIE)</div>
+        </div>
+        <span class="card-tag tag-flight">フライト</span>
+      </div>
       <div class="card-body">
+        <!-- Leg 1 -->
         <p style="font-size:0.78rem;font-weight:600;color:var(--sub);margin-bottom:4px">【第1便】羽田 → ドバイ</p>
-        <div class="flight-row"><div><div class="flight-time">00:05</div><div class="flight-airport">HND 羽田</div></div><div class="flight-arrow"></div><div style="text-align:right"><div class="flight-time">05:40</div><div class="flight-airport">DXB ドバイ</div></div></div>
-        <div class="flight-info-row"><span class="chip">Boeing 777-300ER</span><span class="chip">エコノミークラス</span><span class="chip">エミレーツ航空</span></div>
-        <p style="font-size:0.78rem;font-weight:600;color:var(--sub);margin:14px 0 4px">【第2便】ドバイ → ウィーン (EK127)</p>
-        <div class="flight-row"><div><div class="flight-time">08:55</div><div class="flight-airport">DXB ドバイ</div></div><div class="flight-arrow"></div><div style="text-align:right"><div class="flight-time">12:55</div><div class="flight-airport">VIE ウィーン</div></div></div>
-        <div class="flight-info-row"><span class="chip">EK127</span><span class="chip">Airbus A380-800</span><span class="chip">エコノミークラス</span><span class="chip">エミレーツ航空</span></div>
-        <div style="margin-top:12px;padding:10px 14px;background:#f0fdf4;border-radius:8px;font-size:0.82rem;">✅ <strong>ウィーン到着後：</strong>ユースホステルへチェックイン（7月24日〜8月8日）</div>
+        <div class="flight-row">
+          <div>
+            <div class="flight-time">00:05</div>
+            <div class="flight-airport">HND 羽田</div>
+          </div>
+          <div class="flight-arrow"></div>
+          <div style="text-align:right">
+            <div class="flight-time">05:40</div>
+            <div class="flight-airport">DXB ドバイ</div>
+          </div>
+        </div>
+        <div class="flight-info-row">
+          <span class="chip">Boeing 777-300ER</span>
+          <span class="chip">エコノミークラス</span>
+          <span class="chip">エミレーツ航空</span>
+        </div>
+
+        <!-- Leg 2 -->
+        <p style="font-size:0.78rem;font-weight:600;color:var(--sub);margin: 14px 0 4px">【第2便】ドバイ → ウィーン (EK127)</p>
+        <div class="flight-row">
+          <div>
+            <div class="flight-time">08:55</div>
+            <div class="flight-airport">DXB ドバイ</div>
+          </div>
+          <div class="flight-arrow"></div>
+          <div style="text-align:right">
+            <div class="flight-time">12:55</div>
+            <div class="flight-airport">VIE ウィーン</div>
+          </div>
+        </div>
+        <div class="flight-info-row">
+          <span class="chip">EK127</span>
+          <span class="chip">Airbus A380-800</span>
+          <span class="chip">エコノミークラス</span>
+        </div>
+
+        <div style="margin-top:12px;padding:10px 14px;background:#f0fdf4;border-radius:8px;font-size:0.82rem;">
+          ✅ <strong>ウィーン到着後：</strong>ユースホステルへチェックイン（7月24日〜8月8日）
+        </div>
       </div>
     </div>
   </div>
-  <div class="phase-title"><span>🦄 Phase 2 — ウィーン滞在 / UNICON 22</span></div>
+
+
+  <!-- PHASE 2: ウィーン滞在 / UNICON22 -->
+  <div class="phase-title">
+    <span>🦄 Phase 2 — ウィーン滞在 / UNICON 22</span>
+  </div>
+
+  <!-- Day 3-16: 7/24-8/7 -->
   <div class="tl-item">
-    <div class="tl-date"><div class="month">7月24日</div><div class="day c-purple" style="font-size:1.1rem">〜</div><div class="month">8月7日</div></div>
-    <div class="tl-spine"><div class="tl-dot c-purple"></div><div class="tl-line"></div></div>
+    <div class="tl-date">
+      <div class="month">7月24日</div>
+      <div class="day c-purple" style="font-size:1.1rem">〜</div>
+      <div class="month">8月7日</div>
+    </div>
+    <div class="tl-spine">
+      <div class="tl-dot c-purple"></div>
+      <div class="tl-line"></div>
+    </div>
     <div class="tl-card">
-      <div class="card-header"><div class="card-icon">🏰</div><div><div class="card-title">UNICON 22 参加 ＆ ウィーン観光</div></div><span class="card-tag tag-event">イベント</span></div>
+      <div class="card-header">
+        <div class="card-icon">🏰</div>
+        <div>
+          <div class="card-title">UNICON 22 参加 ＆ ウィーン観光</div>
+        </div>
+        <span class="card-tag tag-event">イベント</span>
+      </div>
       <div class="card-body">
         <p><strong>開催地：</strong>ウィーン、オーストリア</p>
-        <div style="margin-top:8px;font-size:0.85rem;color:var(--sub);"><span>🛏️ ユースホステル 4人部屋（15泊）</span>　／ <span>🍳 朝食付き フルイベント（15日間）</span></div>
-        <p style="margin-top:8px">世界最大の一輪車大会 <strong>UNICON (Unicycling Convention) 22</strong> に参加。競技・フリースタイル・ツーリングなど多様なプログラム。</p>
+        <div style="margin-top:8px;font-size:0.85rem;color:var(--sub);">
+          <span>🛏️ ユースホステル 4人部屋（15泊）</span>　／
+          <span>🍳 朝食付き フルイベント（15日間）</span>
+        </div>
+        <p style="margin-top:8px">
+          世界最大の一輪車大会 <strong>UNICON (Unicycling Convention) 22</strong> に参加。
+          競技・フリースタイル・ツーリングなど多様なプログラム。
+        </p>
       </div>
     </div>
   </div>
+
+  <!-- Day 17-18: 8/8-8/9 -->
   <div class="tl-item">
-    <div class="tl-date"><div class="month">8月</div><div class="day c-purple">8</div><div class="dow">土曜日</div></div>
-    <div class="tl-spine"><div class="tl-dot c-purple"></div><div class="tl-line"></div></div>
+    <div class="tl-date">
+      <div class="month">8月</div>
+      <div class="day c-purple">8</div>
+      <div class="dow">土曜日</div>
+    </div>
+    <div class="tl-spine">
+      <div class="tl-dot c-purple"></div>
+      <div class="tl-line"></div>
+    </div>
     <div class="tl-card">
-      <div class="card-header"><div class="card-icon">🏨</div><div><div class="card-title">ユースホステル チェックアウト → 別宿泊 (8/8・9)</div></div><span class="card-tag tag-stay">宿泊</span></div>
+      <div class="card-header">
+        <div class="card-icon">🏨</div>
+        <div>
+          <div class="card-title">ユースホステル チェックアウト → 別宿泊 (8/8・9)</div>
+        </div>
+        <span class="card-tag tag-stay">宿泊</span>
+      </div>
       <div class="card-body">
         <p>8月8日にユースホステル（第1宿泊先）をチェックアウト。</p>
-        <p style="margin-top:4px"><strong>8月8日・9日</strong>はウィーン市内の別宿泊先に滞在。</p>
-        <div class="note-box">翌10日 11:15 発フライトのチェックイン時刻は <strong>05:30</strong>。前日夜〜当日早朝に空港へ向かう準備を整えること。</div>
+        <p style="margin-top:4px"><strong>8月8日〜10日</strong>はウィーン市内ホテルに2泊滞在。</p>
+
+        <div class="hotel-box">
+          <div class="hotel-name">🏨 アートホテル ANA エンジアン</div>
+          <div class="hotel-sub">Enziana Hotel Vienna　／　ウィーン、オーストリア</div>
+          <div class="hotel-rating">★ 3.5　<span style="font-weight:400;color:var(--sub)">(2,511件)</span></div>
+          <div style="font-size:0.8rem;color:var(--sub);margin-bottom:6px;">
+            🏛️ ホーフブルク宮殿から 3km　／　🎨 ベルヴェデーレ宮殿から 2km　／　✈️ ウィーン国際空港から 20km
+          </div>
+          <div style="font-size:0.8rem;color:var(--sub);margin-bottom:6px;">
+            チェックイン：<strong>8月8日（土）</strong>　／　チェックアウト：<strong>8月10日（月）</strong>　2泊
+          </div>
+          <div class="hotel-amenities">
+            <span class="amenity">📶 無料Wi-Fi</span>
+            <span class="amenity">🍳 朝食（有料）</span>
+            <span class="amenity">❄️ エアコン完備</span>
+            <span class="amenity">🛎️ ルームサービス</span>
+            <span class="amenity">🍺 バー</span>
+            <span class="amenity">🍽️ レストラン</span>
+            <span class="amenity">💪 フィットネス</span>
+            <span class="amenity">♿ バリアフリー</span>
+            <span class="amenity">🚌 空港送迎バス</span>
+            <span class="amenity">🚭 禁煙</span>
+          </div>
+        </div>
+
+        <div class="note-box">
+          翼10日 11:15 発フライトのチェックイン時刻は <strong>05:30</strong>。
+          前日夜〜当日早朝に空港へ向かう準備を整えること。
+        </div>
       </div>
     </div>
   </div>
-  <div class="phase-title"><span>✈️ Phase 3 — ウィーン → 台北</span></div>
+
+
+  <!-- PHASE 3: ウィーン → 台北 -->
+  <div class="phase-title">
+    <span>✈️ Phase 3 — ウィーン → 台北</span>
+  </div>
+
+  <!-- Day 19: 8/10 -->
   <div class="tl-item">
-    <div class="tl-date"><div class="month">8月</div><div class="day c-green">10</div><div class="dow">月曜日</div></div>
-    <div class="tl-spine"><div class="tl-dot c-green"></div><div class="tl-line"></div></div>
+    <div class="tl-date">
+      <div class="month">8月</div>
+      <div class="day c-green">10</div>
+      <div class="dow">月曜日</div>
+    </div>
+    <div class="tl-spine">
+      <div class="tl-dot c-green"></div>
+      <div class="tl-line"></div>
+    </div>
     <div class="tl-card">
-      <div class="card-header"><div class="card-icon">✈️</div><div><div class="card-title">ウィーン・シュヴェヒャート(VIE) → 台北・桃園(TPE)</div></div><span class="card-tag tag-flight">フライト</span></div>
+      <div class="card-header">
+        <div class="card-icon">✈️</div>
+        <div>
+          <div class="card-title">ウィーン・シュヴェヒャート(VIE) → 台北・桃園(TPE)</div>
+        </div>
+        <span class="card-tag tag-flight">フライト</span>
+      </div>
       <div class="card-body">
-        <div class="flight-row"><div><div class="flight-time">11:15</div><div class="flight-airport">VIE ターミナル 1A</div></div><div class="flight-arrow"></div><div style="text-align:right"><div class="flight-time">翌 05:30</div><div class="flight-airport">TPE ターミナル 1</div></div></div>
-        <div class="flight-info-row"><span class="chip">China Airlines CI64</span><span class="chip">チャイナエアライン</span><span class="chip">飛行時間 約12時間15分</span><span class="chip">エコノミー (Q)</span><span class="chip">手荷物 2PC</span><span class="chip">チェックイン 05:30</span></div>
-        <div class="note-box">⚠️ チェックイン開始は <strong>05:30</strong>。早朝のため前日深夜〜当日未明に空港へ移動が必要。</div>
+        <div class="flight-row">
+          <div>
+            <div class="flight-time">11:15</div>
+            <div class="flight-airport">VIE ターミナル 1A</div>
+          </div>
+          <div class="flight-arrow"></div>
+          <div style="text-align:right">
+            <div class="flight-time">翌 05:30</div>
+            <div class="flight-airport">TPE ターミナル 1</div>
+          </div>
+        </div>
+        <div class="flight-info-row">
+          <span class="chip">China Airlines CI64</span>
+          <span class="chip">飛行時間 約12時間15分</span>
+          <span class="chip">エコノミー (Q)</span>
+          <span class="chip">手荷物 2PC</span>
+          <span class="chip">チェックイン 05:30</span>
+        </div>
+        <div class="note-box">
+          ⚠️ チェックイン開始は <strong>05:30</strong>。早朝のため前日深夜〜当日未明に空港へ移動が必要。
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Day 20: 8/11 -->
   <div class="tl-item">
-    <div class="tl-date"><div class="month">8月</div><div class="day c-green">11</div><div class="dow">火曜日</div></div>
-    <div class="tl-spine"><div class="tl-dot c-green"></div><div class="tl-line"></div></div>
+    <div class="tl-date">
+      <div class="month">8月</div>
+      <div class="day c-green">11</div>
+      <div class="dow">火曜日</div>
+    </div>
+    <div class="tl-spine">
+      <div class="tl-dot c-green"></div>
+      <div class="tl-line"></div>
+    </div>
     <div class="tl-card">
-      <div class="card-header"><div class="card-icon">🧋</div><div><div class="card-title">台北・桃園国際空港 到着 → 市内滞在</div></div><span class="card-tag tag-arrive">到着</span></div>
+      <div class="card-header">
+        <div class="card-icon">🧋</div>
+        <div>
+          <div class="card-title">台北・桃園国際空港 到着 → 市内滞在</div>
+        </div>
+        <span class="card-tag tag-arrive">到着</span>
+      </div>
       <div class="card-body">
         <p><strong>05:30</strong> 台北・桃園国際空港 ターミナル1 到着</p>
         <p style="margin-top:6px">入国手続き後、台北市内へ移動（MRT桃園空港線）。</p>
-        <p style="margin-top:4px">台北市内のホテルにチェックイン（2泊予定）。</p>
+
+        <div class="hotel-box">
+          <div class="hotel-name">🏨 Green World ZhongXiao</div>
+          <div class="hotel-sub">洛碁大飯店 忠孝館　／　台北、台湾</div>
+          <div class="hotel-rating">★ 4.1　<span style="font-weight:400;color:var(--sub)">(1,637件) · 4つ星</span></div>
+          <div style="font-size:0.8rem;color:var(--sub);margin-bottom:6px;">
+            🚇 地下鉄 忠孝敦化駅から徒歩 2分　／　🏙️ 台北101から 2km
+          </div>
+          <div style="font-size:0.8rem;color:var(--sub);margin-bottom:6px;">
+            チェックイン：<strong>8月11日（火）</strong>　／　チェックアウト：<strong>8月13日（木）</strong>　2泊
+          </div>
+          <div class="hotel-amenities">
+            <span class="amenity">📶 無料Wi-Fi</span>
+            <span class="amenity">🍳 朝食（有料）</span>
+            <span class="amenity">❄️ エアコン完備</span>
+            <span class="amenity">👔 ランドリー</span>
+            <span class="amenity">💼 ビジネスセンター</span>
+            <span class="amenity">🍽️ レストラン</span>
+            <span class="amenity">💪 フィットネス</span>
+            <span class="amenity">♿ バリアフリー</span>
+            <span class="amenity">🚌 空港送迎バス</span>
+            <span class="amenity">🐾 ペット可</span>
+            <span class="amenity">🚭 禁煙</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Day 21: 8/12 -->
   <div class="tl-item">
-    <div class="tl-date"><div class="month">8月</div><div class="day c-green">12</div><div class="dow">水曜日</div></div>
-    <div class="tl-spine"><div class="tl-dot c-green"></div><div class="tl-line"></div></div>
+    <div class="tl-date">
+      <div class="month">8月</div>
+      <div class="day c-green">12</div>
+      <div class="dow">水曜日</div>
+    </div>
+    <div class="tl-spine">
+      <div class="tl-dot c-green"></div>
+      <div class="tl-line"></div>
+    </div>
     <div class="tl-card">
-      <div class="card-header"><div class="card-icon">🏙️</div><div><div class="card-title">台北 観光・自由行動</div></div><span class="card-tag tag-stay">滞在</span></div>
+      <div class="card-header">
+        <div class="card-icon">🏙️</div>
+        <div>
+          <div class="card-title">台北 観光・自由行動</div>
+        </div>
+        <span class="card-tag tag-stay">滞在</span>
+      </div>
       <div class="card-body">
         <p>台北市内自由行動。九份、士林夜市、台北101など観光。</p>
         <p style="margin-top:4px">翌日 13:45 発のフライトに備え、移動・荷造りを済ませること。</p>
       </div>
     </div>
   </div>
-  <div class="phase-title"><span>🏠 Phase 4 — 帰国</span></div>
+
+
+  <!-- PHASE 4: 台北 → 仙台 → 福島 帰国 -->
+  <div class="phase-title">
+    <span>🏠 Phase 4 — 帰国</span>
+  </div>
+
+  <!-- Day 22: 8/13 -->
   <div class="tl-item">
-    <div class="tl-date"><div class="month">8月</div><div class="day c-red">13</div><div class="dow">木曜日</div></div>
-    <div class="tl-spine"><div class="tl-dot c-red"></div><div class="tl-line"></div></div>
+    <div class="tl-date">
+      <div class="month">8月</div>
+      <div class="day c-red">13</div>
+      <div class="dow">木曜日</div>
+    </div>
+    <div class="tl-spine">
+      <div class="tl-dot c-red"></div>
+      <div class="tl-line"></div>
+    </div>
     <div class="tl-card">
-      <div class="card-header"><div class="card-icon">✈️</div><div><div class="card-title">台北・桃園(TPE) → 仙台(SDJ) → 福島市 帰着</div></div><span class="card-tag tag-home">帰国</span></div>
+      <div class="card-header">
+        <div class="card-icon">✈️</div>
+        <div>
+          <div class="card-title">台北・桃園(TPE) → 仙台(SDJ) → 福島市 帰着</div>
+        </div>
+        <span class="card-tag tag-home">帰国</span>
+      </div>
       <div class="card-body">
+        <!-- Flight -->
         <p style="font-size:0.78rem;font-weight:600;color:var(--sub);margin-bottom:4px">【フライト】台北 → 仙台</p>
-        <div class="flight-row"><div><div class="flight-time">13:45</div><div class="flight-airport">TPE 台北(桃園)</div></div><div class="flight-arrow"></div><div style="text-align:right"><div class="flight-time">18:10</div><div class="flight-airport">SDJ 仙台</div></div></div>
-        <div class="flight-info-row"><span class="chip">IT 254</span><span class="chip">タイガーエア台湾</span><span class="chip">Boeing 777-300ER</span><span class="chip">飛行時間 3時間25分</span></div>
-        <p style="font-size:0.78rem;font-weight:600;color:var(--sub);margin:14px 0 4px">【仙台 → 福島市】</p>
-        <div class="flight-row"><div><div class="flight-time">仙台駅</div><div class="flight-airport">東北新幹線 やまびこ</div></div><div class="flight-arrow"></div><div style="text-align:right"><div class="flight-time">福島駅</div><div class="flight-airport">約 25〜30分</div></div></div>
-        <div style="margin-top:12px;padding:12px 16px;background:linear-gradient(135deg,#fef2f2,#ffe4e6);border-radius:8px;font-size:0.85rem;font-weight:600;color:#991b1b;text-align:center;">🎉 福島市 帰着！お疲れ様でした。</div>
+        <div class="flight-row">
+          <div>
+            <div class="flight-time">13:45</div>
+            <div class="flight-airport">TPE 台北(桃園)</div>
+          </div>
+          <div class="flight-arrow"></div>
+          <div style="text-align:right">
+            <div class="flight-time">18:10</div>
+            <div class="flight-airport">SDJ 仙台</div>
+          </div>
+        </div>
+        <div class="flight-info-row">
+          <span class="chip">IT 254</span>
+          <span class="chip">タイガーエア台湾</span>
+          <span class="chip">Boeing 777-300ER</span>
+          <span class="chip">飛行時間 3時間25分</span>
+        </div>
+
+        <!-- Ground -->
+        <p style="font-size:0.78rem;font-weight:600;color:var(--sub);margin: 14px 0 4px">【仙台 → 福島市】</p>
+        <div class="flight-row">
+          <div>
+            <div class="flight-time">仙台駅</div>
+            <div class="flight-airport">東北新幹線 やまびこ</div>
+          </div>
+          <div class="flight-arrow"></div>
+          <div style="text-align:right">
+            <div class="flight-time">福島駅</div>
+            <div class="flight-airport">約 25〜30分</div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;padding:12px 16px;background:linear-gradient(135deg,#fef2f2,#ffe4e6);border-radius:8px;font-size:0.85rem;font-weight:600;color:#991b1b;text-align:center;">
+          🎉 福島市 帰着！お疲れ様でした。
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+</div><!-- /timeline-wrapper -->
+
+<!-- ===== NOTES ===== -->
 <div style="max-width:860px;margin:0 auto 64px;padding:0 16px;">
   <div style="background:white;border:1px solid var(--border);border-radius:12px;padding:24px;">
     <h2 style="font-size:1rem;font-weight:700;margin-bottom:12px;">📋 チェックリスト</h2>
@@ -230,12 +865,16 @@
       <li>☐ 海外旅行保険 加入</li>
       <li>☐ ウィーン市内交通カード（Vienna City Card）</li>
       <li>☐ 台北 桃園空港 → 市内 MRT 桃園空港線 IC カード</li>
-      <li>☐ ユースホステル 8月8日以降の宿泊先 予約確認</li>
-      <li>☐ 台北宿泊先（8/11〜8/12）予約</li>
+      <li>☑ ユースホステル 8月8日以降の宿泊先 → アートホテル ANA エンジアン（8/8〜8/10）予約済</li>
+      <li>☑ 台北宿泊先（8/11〜8/13）→ Green World ZhongXiao 予約済</li>
       <li>☐ 羽田 → ウィーン 往路フライト チェックイン情報確認</li>
     </ul>
   </div>
 </div>
-<footer>UNICON 22 旅程表 — 生成日: 2026-04-11 ／ 出発地: 福島県福島市</footer>
+
+<footer>
+  UNICON 22 旅程表 — 生成日: 2026-04-11 ／ 出発地: 福島県福島市
+</footer>
+
 </body>
 </html>

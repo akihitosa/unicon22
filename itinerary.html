@@ -219,6 +219,8 @@
     .tag-event   { background: #fff7ed; color: #c2410c; }
     .tag-arrive  { background: #f0fdfa; color: #0f766e; }
     .tag-home    { background: #fef2f2; color: #991b1b; }
+    .tag-practice{ background: #ecfeff; color: #0e7490; }
+    .tag-free    { background: #f1f5f9; color: #475569; }
 
     .card-body { font-size: 0.875rem; color: var(--sub); }
     .card-body p { margin-bottom: 4px; }
@@ -284,6 +286,15 @@
       font-size: 0.8rem;
       color: #854d0e;
     }
+    .warn-box {
+      margin-top: 8px;
+      padding: 8px 12px;
+      background: #fee2e2;
+      border-left: 3px solid #dc2626;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.8rem;
+      color: #991b1b;
+    }
 
     .hotel-box {
       margin-top: 10px;
@@ -331,6 +342,58 @@
       color: #6d28d9;
     }
 
+    /* ===== EVENT TABLE inside card ===== */
+    .event-list {
+      margin-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+    .event-row {
+      display: grid;
+      grid-template-columns: 92px 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+    }
+    .event-row:last-child { border-bottom: none; }
+    .event-time {
+      font-weight: 700;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+      font-size: 0.85rem;
+    }
+    .event-name {
+      color: var(--text);
+    }
+    .event-name .event-sub {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--sub);
+      margin-top: 2px;
+    }
+    .event-venue {
+      font-size: 0.72rem;
+      color: var(--sub);
+      background: var(--bg);
+      border-radius: 999px;
+      padding: 2px 10px;
+      white-space: nowrap;
+    }
+    .ev-cat {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+    .ev-urban     { background: #fef3c7; color: #92400e; }
+    .ev-track     { background: #dcfce7; color: #166534; }
+    .ev-freestyle { background: #ede9fe; color: #5b21b6; }
+    .ev-practice  { background: #cffafe; color: #0e7490; }
+
     .cost-row {
       display: flex;
       flex-wrap: wrap;
@@ -369,6 +432,8 @@
       .tl-date { width: 60px; min-width: 60px; }
       .tl-date .day { font-size: 1.2rem; }
       .flight-row { flex-wrap: wrap; }
+      .event-row { grid-template-columns: 80px 1fr; }
+      .event-venue { grid-column: 2; justify-self: start; margin-top: 2px; }
     }
   </style>
 </head>
@@ -382,6 +447,7 @@
     <span class="badge">🇯🇵 福島市 → 🇦🇹 ウィーン → 🇹🇼 台北 → 🇯🇵 仙台 → 福島市</span>
     <span class="badge">総日数 22日間</span>
     <span class="badge">3ヶ国周遊</span>
+    <span class="badge">出場 8種目</span>
   </div>
 </div>
 
@@ -391,6 +457,7 @@
   <div class="summary-item"><div class="val">4</div><div class="lbl">フライト数</div></div>
   <div class="summary-item"><div class="val">16</div><div class="lbl">ウィーン泊数</div></div>
   <div class="summary-item"><div class="val">2</div><div class="lbl">台北泊数</div></div>
+  <div class="summary-item"><div class="val">8</div><div class="lbl">出場種目数</div></div>
 </div>
 
 <!-- ===== ROUTE ===== -->
@@ -570,12 +637,12 @@
     <span>🦄 Phase 2 — ウィーン滞在 / UNICON 22</span>
   </div>
 
-  <!-- Day 3-16: 7/24-8/7 -->
+  <!-- 概要カード -->
   <div class="tl-item">
     <div class="tl-date">
       <div class="month">7月24日</div>
       <div class="day c-purple" style="font-size:1.1rem">〜</div>
-      <div class="month">8月7日</div>
+      <div class="month">8月8日</div>
     </div>
     <div class="tl-spine">
       <div class="tl-dot c-purple"></div>
@@ -585,20 +652,447 @@
       <div class="card-header">
         <div class="card-icon">🏰</div>
         <div>
-          <div class="card-title">UNICON 22 参加 ＆ ウィーン観光</div>
+          <div class="card-title">UNICON 22 参加（出場 8 種目）</div>
         </div>
-        <span class="card-tag tag-event">イベント</span>
+        <span class="card-tag tag-event">大会期間</span>
       </div>
       <div class="card-body">
-        <p><strong>開催地：</strong>ウィーン、オーストリア</p>
+        <p><strong>開催地：</strong>オーストリア・シュタイアー（Steyr）</p>
+        <p><strong>大会公式期間：</strong>2026年7月25日（土）〜 8月7日（金）</p>
         <div style="margin-top:8px;font-size:0.85rem;color:var(--sub);">
           <span>🛏️ ユースホステル 4人部屋（15泊）</span>　／
           <span>🍳 朝食付き フルイベント（15日間）</span>
         </div>
         <p style="margin-top:8px">
-          世界最大の一輪車大会 <strong>UNICON (Unicycling Convention) 22</strong> に参加。
-          競技・フリースタイル・ツーリングなど多様なプログラム。
+          <strong>Fuo の出場種目（8種目）：</strong>
         </p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;">
+          <span class="chip" style="background:#fef3c7;color:#92400e;">Urban: Flatland Expert</span>
+          <span class="chip" style="background:#fef3c7;color:#92400e;">Urban: Street Expert</span>
+          <span class="chip" style="background:#fef3c7;color:#92400e;">Urban: Speed Trials</span>
+          <span class="chip" style="background:#dcfce7;color:#166534;">Track: Coasting</span>
+          <span class="chip" style="background:#dcfce7;color:#166534;">Track: Stillstand</span>
+          <span class="chip" style="background:#ede9fe;color:#5b21b6;">Freestyle: Individual Expert</span>
+          <span class="chip" style="background:#ede9fe;color:#5b21b6;">Freestyle: Pairs (パートナー: Taichi Ishikawa)</span>
+          <span class="chip" style="background:#ede9fe;color:#5b21b6;">Freestyle: X-Style</span>
+        </div>
+        <div class="warn-box">
+          ⚠️ <strong>注意：</strong>7/30 と 8/2 は別会場で2種目が時間重複あり。詳細は各日カード参照。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 7/25 Sat: Opening -->
+  <div class="tl-item">
+    <div class="tl-date">
+      <div class="month">7月</div>
+      <div class="day c-purple">25</div>
+      <div class="dow">土曜日</div>
+    </div>
+    <div class="tl-spine">
+      <div class="tl-dot c-purple"></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card">
+      <div class="card-header">
+        <div class="card-icon">🎉</div>
+        <div>
+          <div class="card-title">UNICON 22 開幕 / Opening Ceremony</div>
+        </div>
+        <span class="card-tag tag-event">開会式</span>
+      </div>
+      <div class="card-body">
+        <p>大会公式の開会日。受付（Registration）・開会式（Opening）。</p>
+        <p style="margin-top:4px">本人出場種目は無し。会場下見・選手登録の確認に充てる。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 7/26-28 Sun-Tue: 自由日 -->
+  <div class="tl-item">
+    <div class="tl-date">
+      <div class="month">7月</div>
+      <div class="day c-purple" style="font-size:1.2rem">26<br>〜28</div>
+      <div class="dow">日〜火</div>
+    </div>
+    <div class="tl-spine">
+      <div class="tl-dot c-purple"></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card">
+      <div class="card-header">
+        <div class="card-icon">🦄</div>
+        <div>
+          <div class="card-title">自由日（観戦・コース下見）</div>
+        </div>
+        <span class="card-tag tag-free">予定なし</span>
+      </div>
+      <div class="card-body">
+        <p>Fuo の出場種目は無し。他種目の観戦、Speed Trial / Flatland 等の会場（Ice Rink）下見、市街観光に充てる。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 7/29 Wed: Speed Trial Qual -->
+  <div class="tl-item">
+    <div class="tl-date">
+      <div class="month">7月</div>
+      <div class="day c-orange">29</div>
+      <div class="dow">水曜日</div>
+    </div>
+    <div class="tl-spine">
+      <div class="tl-dot c-orange"></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card">
+      <div class="card-header">
+        <div class="card-icon">🏁</div>
+        <div>
+          <div class="card-title">Speed Trial 予選</div>
+        </div>
+        <span class="card-tag tag-event">競技日</span>
+      </div>
+      <div class="card-body">
+        <div class="event-list">
+          <div class="event-row">
+            <div class="event-time">08:00–12:30</div>
+            <div class="event-name"><span class="ev-cat ev-urban">URBAN</span>Speed Trial Qualification</div>
+            <div class="event-venue">Ice Rink</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 7/30 Thu: X-Style Qual + Stillstand Qual + Speed Trial Final -->
+  <div class="tl-item">
+    <div class="tl-date">
+      <div class="month">7月</div>
+      <div class="day c-orange">30</div>
+      <div class="dow">木曜日</div>
+    </div>
+    <div class="tl-spine">
+      <div class="tl-dot c-orange"></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card">
+      <div class="card-header">
+        <div class="card-icon">⚠️</div>
+        <div>
+          <div class="card-title">X-Style 予選 ＋ Stillstand 予選（時間重複）／ Speed Trial 決勝</div>
+        </div>
+        <span class="card-tag tag-event">最繁忙日</span>
+      </div>
+      <div class="card-body">
+        <div class="event-list">
+          <div class="event-row">
+            <div class="event-time">08:00–17:30</div>
+            <div class="event-name"><span class="ev-cat ev-freestyle">FREESTYLE</span>X-Style Qualification</div>
+            <div class="event-venue">ATV Hall</div>
+          </div>
+          <div class="event-row">
+            <div class="event-time">08:00–17:30</div>
+            <div class="event-name"><span class="ev-cat ev-track">TRACK</span>Stillstand Qualification</div>
+            <div class="event-venue">HTL Hall</div>
+          </div>
+          <div class="event-row">
+            <div class="event-time">19:30–22:00</div>
+            <div class="event-name"><span class="ev-cat ev-urban">URBAN</span>Speed Trial Final</div>
+            <div class="event-venue">Ice Rink</div>
+          </div>
+        </div>
+        <div class="warn-box">
+          ⚠️ <strong>X-Style と Stillstand が完全に時間重複（08:00–17:30）。</strong>
+          別会場のため、両方の出場順を主催に確認し、移動できるよう事前調整必須。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 7/31 Fri: X-Style Final -->
+  <div class="tl-item">
+    <div class="tl-date">
+      <div class="month">7月</div>
+      <div class="day c-orange">31</div>
+      <div class="dow">金曜日</div>
+    </div>
+    <div class="tl-spine">
+      <div class="tl-dot c-orange"></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card">
+      <div class="card-header">
+        <div class="card-icon">🏆</div>
+        <div>
+          <div class="card-title">X-Style 決勝</div>
+        </div>
+        <span class="card-tag tag-event">競技日</span>
+      </div>
+      <div class="card-body">
+        <div class="event-list">
+          <div class="event-row">
+            <div class="event-time">18:00–20:30</div>
+            <div class="event-name"><span class="ev-cat ev-freestyle">FREESTYLE</span>X-Style Final</div>
+            <div class="event-venue">ATV Hall</div>
+          </div>
+        </div>
+        <p style="margin-top:8px">日中は時間に余裕あり。翌日からの Freestyle 種目に向けた休息・準備日。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 8/1 Sat: Freestyle Practice 全日 -->
+  <div class="tl-item">
+    <div class="tl-date">
+      <div class="month">8月</div>
+      <div class="day c-orange">1</div>
+      <div class="dow">土曜日</div>
+    </div>
+    <div class="tl-spine">
+      <div class="tl-dot c-orange"></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card">
+      <div class="card-header">
+        <div class="card-icon">🦄</div>
+        <div>
+          <div class="card-title">フリースタイル 練習日（終日開放）</div>
+        </div>
+        <span class="card-tag tag-practice">練習</span>
+      </div>
+      <div class="card-body">
+        <div class="event-list">
+          <div class="event-row">
+            <div class="event-time">06:00–22:00</div>
+            <div class="event-name"><span class="ev-cat ev-practice">PRACTICE</span>Freestyle Practice（自由練習）</div>
+            <div class="event-venue">City Hall</div>
+          </div>
+        </div>
+        <p style="margin-top:8px"><strong>Taichi Ishikawa とのペア合わせ練習に最適。</strong> 16時間の長時間枠で集中練習が可能。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 8/2 Sun: Flatland + Coasting + AM Practice -->
+  <div class="tl-item">
+    <div class="tl-date">
+      <div class="month">8月</div>
+      <div class="day c-orange">2</div>
+      <div class="dow">日曜日</div>
+    </div>
+    <div class="tl-spine">
+      <div class="tl-dot c-orange"></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card">
+      <div class="card-header">
+        <div class="card-icon">⚠️</div>
+        <div>
+          <div class="card-title">Flatland 予選 ＋ Coasting（時間重複）</div>
+        </div>
+        <span class="card-tag tag-event">最繁忙日</span>
+      </div>
+      <div class="card-body">
+        <div class="event-list">
+          <div class="event-row">
+            <div class="event-time">06:00–13:00</div>
+            <div class="event-name"><span class="ev-cat ev-practice">PRACTICE</span>Freestyle Practice（午前のみ）</div>
+            <div class="event-venue">City Hall</div>
+          </div>
+          <div class="event-row">
+            <div class="event-time">08:00–17:00</div>
+            <div class="event-name"><span class="ev-cat ev-urban">URBAN</span>Flatland Lower Rounds（Expert）</div>
+            <div class="event-venue">Ice Rink</div>
+          </div>
+          <div class="event-row">
+            <div class="event-time">09:00–17:00</div>
+            <div class="event-name"><span class="ev-cat ev-track">TRACK</span>Coasting</div>
+            <div class="event-venue">Race Track</div>
+          </div>
+        </div>
+        <div class="warn-box">
+          ⚠️ <strong>Flatland と Coasting が時間重複。</strong>
+          会場が離れているため、Coasting の自分の走順を確認し移動段取りを事前に立てること。
+          Freestyle Practice は早朝（06:00–08:00）の 2 時間が現実的。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 8/3 Mon: Flatland Final -->
+  <div class="tl-item">
+    <div class="tl-date">
+      <div class="month">8月</div>
+      <div class="day c-orange">3</div>
+      <div class="dow">月曜日</div>
+    </div>
+    <div class="tl-spine">
+      <div class="tl-dot c-orange"></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card">
+      <div class="card-header">
+        <div class="card-icon">🏆</div>
+        <div>
+          <div class="card-title">Flatland Expert 決勝</div>
+        </div>
+        <span class="card-tag tag-event">競技日</span>
+      </div>
+      <div class="card-body">
+        <div class="event-list">
+          <div class="event-row">
+            <div class="event-time">20:00–22:30</div>
+            <div class="event-name"><span class="ev-cat ev-urban">URBAN</span>Flatland Final (Expert)</div>
+            <div class="event-venue">Ice Rink</div>
+          </div>
+        </div>
+        <p style="margin-top:8px">日中は時間に余裕あり。翌日の Individual Expert に向けたコンディション調整。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 8/4 Tue: Individual Expert -->
+  <div class="tl-item">
+    <div class="tl-date">
+      <div class="month">8月</div>
+      <div class="day c-orange">4</div>
+      <div class="dow">火曜日</div>
+    </div>
+    <div class="tl-spine">
+      <div class="tl-dot c-orange"></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card">
+      <div class="card-header">
+        <div class="card-icon">🎭</div>
+        <div>
+          <div class="card-title">Freestyle Individual Expert（規定 ＋ 決勝）</div>
+        </div>
+        <span class="card-tag tag-event">競技日</span>
+      </div>
+      <div class="card-body">
+        <div class="event-list">
+          <div class="event-row">
+            <div class="event-time">08:30–17:30</div>
+            <div class="event-name"><span class="ev-cat ev-freestyle">FREESTYLE</span>Convention Contest（Individual 15+）<span class="event-sub">規定演技</span></div>
+            <div class="event-venue">City Hall</div>
+          </div>
+          <div class="event-row">
+            <div class="event-time">18:00–21:30</div>
+            <div class="event-name"><span class="ev-cat ev-freestyle">FREESTYLE</span>Individual Expert <span class="event-sub">フリースタイル決勝</span></div>
+            <div class="event-venue">City Hall</div>
+          </div>
+        </div>
+        <div class="note-box">
+          📍 終日 City Hall 拘束（約13時間）。昼食・休憩の補給準備を。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 8/5 Wed: Pairs -->
+  <div class="tl-item">
+    <div class="tl-date">
+      <div class="month">8月</div>
+      <div class="day c-orange">5</div>
+      <div class="dow">水曜日</div>
+    </div>
+    <div class="tl-spine">
+      <div class="tl-dot c-orange"></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card">
+      <div class="card-header">
+        <div class="card-icon">👯</div>
+        <div>
+          <div class="card-title">Freestyle Pairs（規定 ＋ 決勝）</div>
+        </div>
+        <span class="card-tag tag-event">競技日</span>
+      </div>
+      <div class="card-body">
+        <div class="event-list">
+          <div class="event-row">
+            <div class="event-time">10:30–17:30</div>
+            <div class="event-name"><span class="ev-cat ev-freestyle">FREESTYLE</span>Convention Contest（Pairs 15+）<span class="event-sub">規定演技</span></div>
+            <div class="event-venue">City Hall</div>
+          </div>
+          <div class="event-row">
+            <div class="event-time">18:00–21:30</div>
+            <div class="event-name"><span class="ev-cat ev-freestyle">FREESTYLE</span>Pairs Junior Expert / Expert Final <span class="event-sub">パートナー: Taichi Ishikawa</span></div>
+            <div class="event-venue">City Hall</div>
+          </div>
+        </div>
+        <div class="note-box">
+          📍 終日 City Hall 拘束（約11時間）。Pair Age Group のカテゴリ振り分けは要主催確認。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 8/6 Thu: Street -->
+  <div class="tl-item">
+    <div class="tl-date">
+      <div class="month">8月</div>
+      <div class="day c-orange">6</div>
+      <div class="dow">木曜日</div>
+    </div>
+    <div class="tl-spine">
+      <div class="tl-dot c-orange"></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card">
+      <div class="card-header">
+        <div class="card-icon">🛹</div>
+        <div>
+          <div class="card-title">Street 予選</div>
+        </div>
+        <span class="card-tag tag-event">競技日</span>
+      </div>
+      <div class="card-body">
+        <div class="event-list">
+          <div class="event-row">
+            <div class="event-time">10:30–15:00</div>
+            <div class="event-name"><span class="ev-cat ev-urban">URBAN</span>Street（予選）</div>
+            <div class="event-venue">Ice Rink</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 8/7 Fri: Street Final + Final Party -->
+  <div class="tl-item">
+    <div class="tl-date">
+      <div class="month">8月</div>
+      <div class="day c-orange">7</div>
+      <div class="dow">金曜日</div>
+    </div>
+    <div class="tl-spine">
+      <div class="tl-dot c-orange"></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card">
+      <div class="card-header">
+        <div class="card-icon">🏆</div>
+        <div>
+          <div class="card-title">Street Expert 決勝 ／ Final Party</div>
+        </div>
+        <span class="card-tag tag-event">最終日</span>
+      </div>
+      <div class="card-body">
+        <div class="event-list">
+          <div class="event-row">
+            <div class="event-time">16:00–18:00</div>
+            <div class="event-name"><span class="ev-cat ev-urban">URBAN</span>Expert Street Final</div>
+            <div class="event-venue">Ice Rink</div>
+          </div>
+          <div class="event-row">
+            <div class="event-time">19:30–23:59</div>
+            <div class="event-name">🎊 Final Party（大会公式パーティ）</div>
+            <div class="event-venue">Ice Rink</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -700,6 +1194,7 @@
           <span class="chip">飛行時間 約12時間15分</span>
           <span class="chip">エコノミー (Q)</span>
           <span class="chip">手荷物 2PC</span>
+          <span class="chip">チェックイン 05:30</span>
         </div>
         <div class="note-box">
           ⚠️ チェックイン開始は <strong>05:30</strong>。早朝のため前日深夜〜当日未明に空港へ移動が必要。
@@ -866,12 +1361,15 @@
       <li>☐ 台北 桃園空港 → 市内 MRT 桃園空港線 IC カード</li>
       <li>☑ ユースホステル 8月8日以降の宿泊先 → アートホテル ANA エンジアン（8/8〜8/10）予約済</li>
       <li>☑ 台北宿泊先（8/11〜8/13）→ Green World ZhongXiao 予約済</li>
+      <li>☐ 7/30 X-Style と Stillstand 出場順を主催に確認（時間重複）</li>
+      <li>☐ 8/2 Coasting の走順確認（Flatland Lower Rounds と重複）</li>
+      <li>☐ Pairs Age Group のカテゴリ振り分け確認</li>
     </ul>
   </div>
 </div>
 
 <footer>
-  UNICON 22 旅程表 — 生成日: 2026-04-11 ／ 出発地: 福島県福島市
+  UNICON 22 旅程表 — 競技スケジュール反映版 下書き ／ 出発地: 福島県福島市
 </footer>
 
 </body>

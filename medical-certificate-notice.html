@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>診断書アップロード完了のご報告</title>
+  <style>
+    :root {
+      --ink: #16202a;
+      --muted: #5f6b76;
+      --line: #d8dee5;
+      --soft: #f4f7fa;
+      --accent: #0b6e69;
+      --accent-strong: #074f4b;
+      --paper: #ffffff;
+      --warn: #8a5a00;
+      --warn-bg: #fff6df;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #eef2f5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.7;
+    }
+
+    main {
+      width: min(960px, calc(100% - 32px));
+      margin: 32px auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(18, 32, 45, 0.08);
+    }
+
+    header {
+      padding: 34px 40px 30px;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      opacity: 0.86;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      margin: 16px 0 0;
+      max-width: 760px;
+      font-size: 17px;
+      opacity: 0.95;
+    }
+
+    section {
+      padding: 30px 40px;
+      border-top: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 22px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .summary-item {
+      min-height: 112px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .value {
+      display: block;
+      overflow-wrap: anywhere;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .steps {
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    .steps li {
+      margin: 0 0 10px;
+    }
+
+    .notice {
+      padding: 16px 18px;
+      color: var(--warn);
+      border: 1px solid #f1d895;
+      border-radius: 8px;
+      background: var(--warn-bg);
+    }
+
+    .checklist {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .checklist li {
+      position: relative;
+      padding: 12px 14px 12px 42px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: 15px;
+      top: 11px;
+      width: 20px;
+      height: 20px;
+      color: #ffffff;
+      border-radius: 50%;
+      background: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 20px;
+      text-align: center;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 16px;
+      color: #ffffff;
+      background: var(--accent);
+      border-radius: 6px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      color: var(--accent-strong);
+      background: #e6f2f1;
+      border: 1px solid #b7d7d4;
+    }
+
+    footer {
+      padding: 22px 40px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      background: #fbfcfd;
+      font-size: 13px;
+    }
+
+    @media (max-width: 720px) {
+      main {
+        width: min(100% - 20px, 960px);
+        margin: 10px auto;
+      }
+
+      header,
+      section,
+      footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .summary {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+
+      main {
+        width: 100%;
+        margin: 0;
+        border: 0;
+        box-shadow: none;
+      }
+
+      .actions {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">UNICON 2026 Registration</p>
+      <h1>診断書アップロード完了のご報告</h1>
+      <p class="lead">
+        UNICON 2026登録システムの該当登録者ページにて、診断書をアップロード済みであることを共有します。
+      </p>
+    </header>
+
+    <section aria-labelledby="summary-title">
+      <h2 id="summary-title">アップロード内容</h2>
+      <p>
+        対象ページの「Contact details」入力画面で、必要書類として診断書を登録しました。
+        大会事務局または確認担当者は、下記URLにログインしたうえで登録状況をご確認ください。
+      </p>
+
+      <div class="summary">
+        <div class="summary-item">
+          <span class="label">対象ページ</span>
+          <span class="value">Contact details / Medical certificate upload</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">登録者ID</span>
+          <span class="value">28</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">状態</span>
+          <span class="value">診断書アップロード済み</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">作成日</span>
+          <span class="value">2026年5月23日</span>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="url-title">
+      <h2 id="url-title">確認用URL</h2>
+      <p>
+        <a href="https://unicon2026.reg.unicycling-software.com/en/registrants/28/build/add_contact_details">
+          https://unicon2026.reg.unicycling-software.com/en/registrants/28/build/add_contact_details
+        </a>
+      </p>
+      <div class="notice">
+        このページはログインが必要です。未ログインの場合はサインイン画面に転送されるため、UNICON 2026登録システムのアカウントでログインしてから確認してください。
+      </div>
+    </section>
+
+    <section aria-labelledby="check-title">
+      <h2 id="check-title">確認していただきたいこと</h2>
+      <ul class="checklist">
+        <li>該当登録者ページで診断書ファイルがアップロード済みになっていること。</li>
+        <li>アップロードされた診断書が参加条件または提出条件を満たしていること。</li>
+        <li>追加提出や差し替えが必要な場合は、登録者へ連絡すること。</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="steps-title">
+      <h2 id="steps-title">確認手順</h2>
+      <ol class="steps">
+        <li>上記の確認用URLを開きます。</li>
+        <li>サインイン画面が表示された場合は、UNICON 2026登録システムにログインします。</li>
+        <li>登録者ID 28 の「Contact details」画面を開きます。</li>
+        <li>診断書のアップロード欄で、ファイルが登録済みであることを確認します。</li>
+      </ol>
+      <div class="actions">
+        <a class="button" href="https://unicon2026.reg.unicycling-software.com/en/registrants/28/build/add_contact_details">対象ページを開く</a>
+        <a class="button secondary" href="https://unicon2026.reg.unicycling-software.com/en/users/sign_in">ログインページを開く</a>
+      </div>
+    </section>
+
+    <footer>
+      この資料は、診断書アップロード済みであることを関係者へ説明するための共有用HTMLです。
+    </footer>
+  </main>
+</body>
+</html>
